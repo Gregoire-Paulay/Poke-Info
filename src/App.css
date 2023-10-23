@@ -1,0 +1,79 @@
+/* ------------ GENERAL ---------- */
+:root {
+  --dark: #111111;
+  --light: white;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  position: relative;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+/* ------ Gestion light/dark mode ------ */
+.dark {
+  background-color: var(--dark);
+  color: var(--light);
+}
+.light {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.moon {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  background-color: #333333;
+  border: none;
+  border-radius: 50%;
+  padding: 6px 9px;
+  z-index: 1;
+}
+.sun {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+  background-color: var(--light);
+  border: none;
+  border-radius: 50%;
+  padding: 6px 9px;
+  z-index: 1;
+}
+
+/* ----------------------------------- */
+/* -------------- HEADER ------------- */
+/* ----------------------------------- */
+header {
+  border-bottom: 1px solid lightgray;
+}
+header img {
+  width: 200px;
+  height: 100px;
+}
+
+header > div:first-of-type {
+  border: 2px solid blue;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.headerNav {
+  border: 2px solid green;
+  display: flex;
+  gap: 20px;
+}
