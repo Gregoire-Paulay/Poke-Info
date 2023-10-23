@@ -17,6 +17,7 @@ h1 {
   font-weight: bold;
   padding: 10px 0;
 }
+
 /* ------ Gestion light/dark mode ------ */
 .dark {
   background-color: var(--dark);
@@ -60,10 +61,14 @@ h1 {
 /* ----------------------------------- */
 header {
   border-bottom: 1px solid lightgray;
+  margin-bottom: 40px;
 }
 header img {
-  width: 200px;
+  width: 250px;
   height: 100px;
+}
+header img:hover {
+  cursor: pointer;
 }
 
 header > div:first-of-type {
@@ -76,4 +81,24 @@ header > div:first-of-type {
   border: 2px solid green;
   display: flex;
   gap: 20px;
+}
+
+/* ----------------------------------- */
+/* --------------- MAIN -------------- */
+/* ----------------------------------- */
+
+/* ----------------------------------- */
+/* -------------- FOOTER ------------- */
+/* ----------------------------------- */
+footer {
+  padding: 30px;
+  margin-top: 40px;
+  text-align: center;
+  border-top: 1px solid lightgray;
+}
+
+footer a {
+  text-decoration: none;
+  color: darkgray;
+  font-weight: bold;
 }
