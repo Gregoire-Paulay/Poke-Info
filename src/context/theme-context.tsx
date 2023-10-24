@@ -4,7 +4,7 @@ type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
 
-type Theme = "dark" | "light";
+type Theme = "night" | "light";
 
 type ThemeContext = {
   theme: Theme;

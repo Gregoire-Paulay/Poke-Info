@@ -10,11 +10,11 @@ const Theme = (): JSX.Element => {
       <button
         className={themeButton}
         onClick={() => {
-          if (theme === "dark") {
+          if (theme === "night") {
             setTheme("light");
             setThemeButton("moon");
           } else {
-            setTheme("dark");
+            setTheme("night");
             setThemeButton("sun");
           }
         }}

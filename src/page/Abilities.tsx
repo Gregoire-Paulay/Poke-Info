@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // Components
 import Pagination from "../components/Pagination";
 
-type Pokemons = {
+type Abilities = {
   count: number;
   next: string | null;
   previous: string | null;
@@ -15,22 +15,23 @@ type Pokemons = {
   }[];
 };
 
-const Home = (): JSX.Element => {
+const Abilities = (): JSX.Element => {
+  const navigate = useNavigate();
+
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [data, setData] = useState<Pokemons | null>(null);
+  const [data, setData] = useState<Abilities | null>(null);
   const [offset, setOffset] = useState<number>(0);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=50`
+          `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=80`
         );
         // console.log(response.data);
         setData(response.data);
+
         setIsLoading(false);
       } catch (error) {
         setError(new Error("An error occured !!!"));
@@ -44,30 +45,27 @@ const Home = (): JSX.Element => {
 
   return (
     <div className="container">
-      <div>
-        {data?.results.map((pokemon) => {
-          const url = pokemon.url.split("/")[6];
+      <h1>All Abilities</h1>
 
+      <div>
+        {data?.results.map((abilities) => {
+          const abilityId = abilities.url.split("/")[6];
           return (
             <button
-              key={pokemon.name}
+              key={abilities.name}
               onClick={() => {
-                navigate("/pokemon/" + pokemon.name);
+                navigate("/Ability/" + abilityId);
               }}
             >
-              <div>{pokemon.name}</div>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
-                alt="Sprites pokémon"
-              />
+              {abilities.name}{" "}
             </button>
           );
         })}
-
-        <Pagination count={data?.count} offset={offset} setOffset={setOffset} />
       </div>
+
+      <Pagination count={data?.count} offset={offset} setOffset={setOffset} />
     </div>
   );
 };
 
-export default Home;
+export default Abilities;

@@ -17,9 +17,20 @@ h1 {
   font-weight: bold;
   padding: 10px 0;
 }
+h2 {
+  font-size: 24px;
+  margin: 15px 0 8px 0;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
 
 /* ------ Gestion light/dark mode ------ */
-.dark {
+.night {
   background-color: var(--dark);
   color: var(--light);
 }
@@ -86,6 +97,89 @@ header > div:first-of-type {
 /* ----------------------------------- */
 /* --------------- MAIN -------------- */
 /* ----------------------------------- */
+
+/* ----------- PAGE POKEMON ---------- */
+.pokeInfo {
+  /* border: 3px solid red; */
+  display: flex;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: whitesmoke;
+}
+.pokeInfo > div:first-of-type {
+  border: 3px solid coral;
+  width: 45%;
+}
+.pokeInfo > div > img {
+  border: 3px solid black;
+  width: 100%;
+}
+
+.dex {
+  border: 3px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pokeType {
+  border: 3px solid blue;
+}
+
+.normal {
+  background-color: #a0a2a0;
+}
+.fighting {
+  background-color: #fd8101;
+}
+.flying {
+  background-color: #82bbf0;
+}
+.poison {
+  background-color: #923fcc;
+}
+.ground {
+  background-color: #92501c;
+}
+.rock {
+  background-color: #b1aa82;
+}
+.bug {
+  background-color: #92a312;
+}
+.ghost {
+  background-color: #713e71;
+}
+.steel {
+  background-color: #5fa3ba;
+}
+.fire {
+  background-color: #e72425;
+}
+.water {
+  background-color: #2481f0;
+}
+.grass {
+  background-color: #3ca324;
+}
+.electric {
+  background-color: #fac100;
+}
+.psychic {
+  background-color: #ef3e7a;
+}
+.ice {
+  background-color: #3cd9ff;
+}
+.dragon {
+  background-color: #4f60e2;
+}
+.dark {
+  background-color: #4f3f3c;
+}
+.fairy {
+  background-color: #f070f0;
+}
 
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */

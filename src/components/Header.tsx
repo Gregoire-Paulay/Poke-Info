@@ -19,8 +19,14 @@ const Header = (): JSX.Element => {
         <div>
           <h1>Titre de mon site</h1>
           <div className="headerNav">
+            <p
+              onClick={() => {
+                navigate("/Abilities");
+              }}
+            >
+              Abilities
+            </p>
             <p>Types</p>
-            <p>Move</p>
             <p>Page 3</p>
             <p>Page 4</p>
           </div>
