@@ -92,17 +92,25 @@ const Pokemon = (): JSX.Element => {
           <div className="dex">
             <h1>{Upperfirst(name)}</h1>
             <div>
-              <img src={data?.sprites.front_default} alt="sprites" />
-              <img src={data?.sprites.front_shiny} alt="sprites" />
+              <img
+                src={data?.sprites.front_default}
+                alt="sprites"
+                className="miniature"
+              />
+              <img
+                src={data?.sprites.front_shiny}
+                alt="sprites"
+                className="miniature"
+              />
             </div>
             {data?.id < 10 ? (
-              <p># 000{data?.id}</p>
+              <h2># 000{data?.id}</h2>
             ) : data?.id < 100 ? (
-              <p># 00{data?.id}</p>
+              <h2># 00{data?.id}</h2>
             ) : data?.id < 1000 ? (
-              <p># 0{data?.id}</p>
+              <h2># 0{data?.id}</h2>
             ) : (
-              <p># {data?.id}</p>
+              <h2># {data?.id}</h2>
             )}
           </div>
 
@@ -126,16 +134,18 @@ const Pokemon = (): JSX.Element => {
             </div>
           </section>
 
-          <section>
+          <section className="pokeStat">
             <h3>Base Stats</h3>
-            {data?.stats.map((stats) => {
-              return (
-                <div key={stats.stat.name}>
-                  <span>{stats.stat.name}</span>
-                  <span>{stats.base_stat}</span>
-                </div>
-              );
-            })}
+            <div>
+              {data?.stats.map((stats) => {
+                return (
+                  <div key={stats.stat.name}>
+                    <p className="statName">{stats.stat.name}</p>
+                    <p>{stats.base_stat}</p>
+                  </div>
+                );
+              })}
+            </div>
           </section>
 
           <section>

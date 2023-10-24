@@ -100,11 +100,14 @@ header > div:first-of-type {
 
 /* ----------- PAGE POKEMON ---------- */
 .pokeInfo {
-  /* border: 3px solid red; */
+  border: 3px solid red;
   display: flex;
-  padding: 20px;
+  padding: 20px 0;
   border-radius: 15px;
   background-color: whitesmoke;
+  gap: 50px;
+  justify-content: center;
+  color: black;
 }
 .pokeInfo > div:first-of-type {
   border: 3px solid coral;
@@ -121,9 +124,52 @@ header > div:first-of-type {
   align-items: center;
   justify-content: space-around;
 }
+.dex .miniature {
+  /* border: 3px solid pink; */
+  height: 90px;
+}
 
+.pokeInfo > div:nth-child(2) {
+  border: 3px solid purple;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  justify-content: center;
+  align-items: center;
+  background-color: #6890f0;
+  border-radius: 18px;
+  gap: 6px;
+}
 .pokeType {
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  background-color: #9db7f5;
+  border-radius: 6px;
+}
+.pokeType > div {
+  display: flex;
+  gap: 15px;
+  background-color: #ffffff;
+  width: 99%;
+  justify-content: center;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  padding: 5px;
+}
+.pokeType > div > p {
+  border: 1px solid lightgray;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 17px;
+}
+.pokeType > div > p:hover {
+  cursor: pointer;
+  border: 1px solid black;
 }
 
 .normal {
@@ -179,6 +225,39 @@ header > div:first-of-type {
 }
 .fairy {
   background-color: #f070f0;
+}
+
+.pokeStat {
+  /* border: 3px solid red; */
+  width: 95%;
+  background-color: #9db7f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+}
+.pokeStat > div {
+  /* border: 3px solid green; */
+  display: flex;
+  width: 99%;
+  justify-content: space-around;
+  background-color: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  padding: 5px 0;
+}
+.pokeStat > div > div {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background-color: whitesmoke;
+  padding: 3px 5px;
+  border-radius: 5px;
+}
+.statName {
+  font-weight: bold;
 }
 
 /* ----------------------------------- */
