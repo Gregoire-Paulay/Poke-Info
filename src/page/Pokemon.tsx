@@ -17,16 +17,16 @@ const pokemonSchema = z.object({
   id: z.number(),
   name: z.string(),
   sprites: z.object({
-    front_default: z.string(),
-    front_shiny: z.string(),
+    front_default: z.string().nullable(),
+    front_shiny: z.string().nullable(),
     other: z.object({
       home: z.object({
-        front_default: z.string(),
-        front_shiny: z.string(),
+        front_default: z.string().nullable(),
+        front_shiny: z.string().nullable(),
       }),
       "official-artwork": z.object({
-        front_default: z.string(),
-        front_shiny: z.string(),
+        front_default: z.string().nullable(),
+        front_shiny: z.string().nullable(),
       }),
     }),
   }),
@@ -49,7 +49,6 @@ type Pokemons = z.infer<typeof pokemonSchema>;
 
 const Pokemon = (): JSX.Element => {
   const { name } = useParams();
-
   const navigate = useNavigate();
 
   const [error, setError] = useState<Error | null>(null);
@@ -111,11 +110,12 @@ const Pokemon = (): JSX.Element => {
                 <h2># {data?.id}</h2>
               ))}
           </div>
-
-          <img
-            src={data?.sprites.other["official-artwork"].front_default}
-            alt="sprites"
-          />
+          {data?.sprites.other["official-artwork"].front_default && (
+            <img
+              src={data?.sprites.other["official-artwork"].front_default}
+              alt="sprites"
+            />
+          )}
         </div>
 
         <div>
@@ -175,16 +175,21 @@ const Pokemon = (): JSX.Element => {
           <section className="pokeMini">
             <h3>Miniatures</h3>
             <div>
-              <img
-                src={data?.sprites.front_default}
-                alt="sprites"
-                className="miniature"
-              />
-              <img
-                src={data?.sprites.front_shiny}
-                alt="sprites"
-                className="miniature"
-              />
+              {data?.sprites.front_default && (
+                <img
+                  src={data?.sprites.front_default}
+                  alt="sprites"
+                  className="miniature"
+                />
+              )}
+
+              {data?.sprites.front_shiny && (
+                <img
+                  src={data?.sprites.front_shiny}
+                  alt="sprites"
+                  className="miniature"
+                />
+              )}
             </div>
           </section>
 
@@ -220,20 +225,29 @@ const Pokemon = (): JSX.Element => {
         <div>
           <div>
             <h3>Official Artwork</h3>
-            <img
-              src={data?.sprites.other["official-artwork"].front_default}
-              alt="sprites"
-            />
-            <img
-              src={data?.sprites.other["official-artwork"].front_shiny}
-              alt="sprites"
-            />
+            {data?.sprites.other["official-artwork"].front_default && (
+              <img
+                src={data?.sprites.other["official-artwork"].front_default}
+                alt="sprites"
+              />
+            )}
+
+            {data?.sprites.other["official-artwork"].front_shiny && (
+              <img
+                src={data?.sprites.other["official-artwork"].front_shiny}
+                alt="sprites"
+              />
+            )}
           </div>
 
           <div>
             <h3>Home </h3>
-            <img src={data?.sprites.other.home.front_default} alt="sprites" />
-            <img src={data?.sprites.other.home.front_shiny} alt="sprites" />
+            {data?.sprites.other.home.front_default && (
+              <img src={data?.sprites.other.home.front_default} alt="sprites" />
+            )}
+            {data?.sprites.other.home.front_shiny && (
+              <img src={data?.sprites.other.home.front_shiny} alt="sprites" />
+            )}
           </div>
         </div>
       </div>

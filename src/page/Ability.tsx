@@ -4,6 +4,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 
+// Function
+import Upperfirst from "../assets/function/Upperfirst";
+
 // Type
 const abilitySchema = z.object({
   effect_entries: z.array(
@@ -76,7 +79,7 @@ const Ability = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h2>{data?.name}</h2>
+      <h2>{Upperfirst(data?.name)}</h2>
 
       {data?.effect_entries.map((ability) => {
         return (
@@ -96,7 +99,7 @@ const Ability = (): JSX.Element => {
                 navigate("/pokemon/" + pokemon.pokemon.name);
               }}
             >
-              <p>{pokemon.pokemon.name}</p>
+              <p>{Upperfirst(pokemon.pokemon.name)}</p>
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
                 alt="Sprites pokémon"

@@ -4,6 +4,9 @@ import { ZodError, z } from "zod";
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 
+// Function
+import Upperfirst from "../assets/function/Upperfirst";
+
 // Type
 const typeSchema = z.object({
   count: z.number(),
@@ -72,7 +75,7 @@ const Types = (): JSX.Element => {
               navigate("/PokeType/" + typeId);
             }}
           >
-            {types.name}
+            {Upperfirst(types.name)}
           </p>
         );
       })}

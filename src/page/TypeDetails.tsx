@@ -4,6 +4,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 
+// Function
+import Upperfirst from "../assets/function/Upperfirst";
+
 // Type
 const typeSchema = z.object({
   id: z.number(),
@@ -76,7 +79,7 @@ const PokeType = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h1 className={data?.name}>{data?.name}</h1>
+      <h1 className={data?.name}>{Upperfirst(data?.name)}</h1>
 
       <div>
         <section className="offensive">
@@ -95,7 +98,7 @@ const PokeType = (): JSX.Element => {
                       navigate("/PokeType/" + typeId);
                     }}
                   >
-                    {type.name}
+                    {Upperfirst(type.name)}
                   </p>
                 );
               })}
@@ -115,7 +118,7 @@ const PokeType = (): JSX.Element => {
                       navigate("/PokeType/" + typeId);
                     }}
                   >
-                    {type.name}
+                    {Upperfirst(type.name)}
                   </p>
                 );
               })}
@@ -135,7 +138,7 @@ const PokeType = (): JSX.Element => {
                       navigate("/PokeType/" + typeId);
                     }}
                   >
-                    {type.name}
+                    {Upperfirst(type.name)}
                   </p>
                 );
               })}
@@ -158,7 +161,7 @@ const PokeType = (): JSX.Element => {
                       navigate("/PokeType/" + typeId);
                     }}
                   >
-                    {type.name}
+                    {Upperfirst(type.name)}
                   </p>
                 );
               })}
@@ -178,7 +181,7 @@ const PokeType = (): JSX.Element => {
                       navigate("/PokeType/" + typeId);
                     }}
                   >
-                    {type.name}
+                    {Upperfirst(type.name)}
                   </p>
                 );
               })}
@@ -197,7 +200,7 @@ const PokeType = (): JSX.Element => {
                     navigate("/PokeType/" + typeId);
                   }}
                 >
-                  {type.name}
+                  {Upperfirst(type.name)}
                 </p>
               );
             })}

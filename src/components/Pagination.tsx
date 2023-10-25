@@ -24,7 +24,7 @@ const Pagination = ({
       ) : null}
 
       {count &&
-        (offset / limit >= Math.round(count / limit) ? null : (
+        (offset / limit >= Math.floor(count / limit) ? null : (
           <button
             onClick={() => {
               setOffset(offset + limit);

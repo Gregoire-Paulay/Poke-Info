@@ -7,6 +7,9 @@ import HashLoader from "react-spinners/HashLoader";
 // Components
 import Pagination from "../components/Pagination";
 
+// Function
+import Upperfirst from "../assets/function/Upperfirst";
+
 //Types
 const pokemonSchema = z.object({
   count: z.number(),
@@ -30,7 +33,7 @@ const Home = (): JSX.Element => {
       try {
         setError(null);
         const response = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
+          `https://pokeapi.co/api/v2/pokemon-species/?offset=${offset}&limit=${limit}`
         );
         // console.log(response.data);
         const responseDataParsed = pokemonSchema.parse(response.data);
@@ -75,7 +78,7 @@ const Home = (): JSX.Element => {
                 navigate("/pokemon/" + pokemon.name);
               }}
             >
-              <div>{pokemon.name}</div>
+              <div>{Upperfirst(pokemon.name)}</div>
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
                 alt="Sprites pokémon"

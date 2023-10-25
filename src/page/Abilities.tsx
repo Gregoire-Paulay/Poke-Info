@@ -7,6 +7,9 @@ import HashLoader from "react-spinners/HashLoader";
 // Components
 import Pagination from "../components/Pagination";
 
+// Fonction
+import Upperfirst from "../assets/function/Upperfirst";
+
 //Type
 const abilitiesSchema = z.object({
   count: z.number(),
@@ -81,7 +84,7 @@ const Abilities = (): JSX.Element => {
                 navigate("/Ability/" + abilityId);
               }}
             >
-              {abilities.name}
+              {Upperfirst(abilities.name)}
             </button>
           );
         })}

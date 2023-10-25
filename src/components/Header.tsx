@@ -33,8 +33,7 @@ const Header = (): JSX.Element => {
             >
               Types
             </p>
-            <p>Page 3</p>
-            <p>Page 4</p>
+            <p>Moves</p>
           </div>
         </div>
       </div>
