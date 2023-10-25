@@ -2,6 +2,9 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+// Function
+import Upperfirst from "../assets/function/Upperfirst";
+
 type Pokemon = {
   abilities: {
     ability: {
@@ -70,18 +73,6 @@ const Pokemon = (): JSX.Element => {
     fetchData();
   }, []);
 
-  const Upperfirst = (name: any) => {
-    let newName = "";
-    for (let i = 0; i < name.length; i++) {
-      if (i === 0) {
-        newName += name[i].toUpperCase();
-      } else {
-        newName += name[i];
-      }
-    }
-    return newName;
-  };
-
   if (error) return <div> Error: {error.message}</div>;
   if (isLoading) return <div>Loading....</div>;
 
@@ -91,18 +82,7 @@ const Pokemon = (): JSX.Element => {
         <div>
           <div className="dex">
             <h1>{Upperfirst(name)}</h1>
-            <div>
-              <img
-                src={data?.sprites.front_default}
-                alt="sprites"
-                className="miniature"
-              />
-              <img
-                src={data?.sprites.front_shiny}
-                alt="sprites"
-                className="miniature"
-              />
-            </div>
+
             {data?.id < 10 ? (
               <h2># 000{data?.id}</h2>
             ) : data?.id < 100 ? (
@@ -127,7 +107,7 @@ const Pokemon = (): JSX.Element => {
               {data?.types.map((types) => {
                 return (
                   <p key={types.type.name} className={types.type.name}>
-                    {types.type.name}
+                    {Upperfirst(types.type.name)}
                   </p>
                 );
               })}
@@ -140,7 +120,7 @@ const Pokemon = (): JSX.Element => {
               {data?.stats.map((stats) => {
                 return (
                   <div key={stats.stat.name}>
-                    <p className="statName">{stats.stat.name}</p>
+                    <p className="statName">{Upperfirst(stats.stat.name)}</p>
                     <p>{stats.base_stat}</p>
                   </div>
                 );
@@ -148,37 +128,60 @@ const Pokemon = (): JSX.Element => {
             </div>
           </section>
 
-          <section>
+          <section className="pokeAbility">
             <h3>Abilities</h3>
-            {data?.abilities.map((abilities) => {
-              const abilityId = abilities.ability.url.split("/")[6];
-              return (
-                <div
-                  key={abilities.ability.name}
-                  onClick={() => {
-                    navigate("/ability/" + abilityId);
-                  }}
-                >
-                  <span>{abilities.ability.name}</span>
-                </div>
-              );
-            })}
+            <div>
+              {data?.abilities.map((abilities) => {
+                const abilityId = abilities.ability.url.split("/")[6];
+                return (
+                  <p
+                    key={abilities.ability.name}
+                    onClick={() => {
+                      navigate("/ability/" + abilityId);
+                    }}
+                  >
+                    {Upperfirst(abilities.ability.name)}
+                  </p>
+                );
+              })}
+            </div>
           </section>
 
-          <section>
-            <h3>Divers</h3>
-            <p>height: {data?.height}</p>
-            <p>weight: {data?.weight}</p>
+          <section className="pokeMini">
+            <h3>Miniatures</h3>
+            <div>
+              <img
+                src={data?.sprites.front_default}
+                alt="sprites"
+                className="miniature"
+              />
+              <img
+                src={data?.sprites.front_shiny}
+                alt="sprites"
+                className="miniature"
+              />
+            </div>
           </section>
 
-          <section>
-            <h3>Ev Yield</h3>
+          <section className="pokeSize">
+            <div>
+              <h3>Height</h3>
+              {data?.height && <p>{data.height / 10} m</p>}
+            </div>
+            <div>
+              <h3>Weight</h3>
+              {data?.weight && <p>{data.weight / 10} kg</p>}
+            </div>
+          </section>
+
+          <section className="pokeEv">
+            <h3>EV Yield</h3>
             <div>
               {data?.stats.map((ev) => {
                 return (
                   <div key={ev.stat.name}>
                     <p>{ev.effort}</p>
-                    <p>{ev.stat.name}</p>
+                    <p className="statName">{Upperfirst(ev.stat.name)}</p>
                   </div>
                 );
               })}

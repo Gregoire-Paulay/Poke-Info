@@ -2,33 +2,40 @@ interface Props {
   count: number | undefined;
   offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
+  limit: number;
 }
 
-const Pagination = ({ count, offset, setOffset }: Props): JSX.Element => {
+const Pagination = ({
+  count,
+  offset,
+  setOffset,
+  limit,
+}: Props): JSX.Element => {
   return (
     <div>
       {offset ? (
         <button
           onClick={() => {
-            setOffset(offset - 50);
+            setOffset(offset - limit);
           }}
         >
           previous
         </button>
       ) : null}
 
-      {offset / 50 >= Math.round(count / 50) ? null : (
-        <button
-          onClick={() => {
-            setOffset(offset + 50);
-          }}
-        >
-          next
-        </button>
-      )}
+      {count &&
+        (offset / limit >= Math.round(count / limit) ? null : (
+          <button
+            onClick={() => {
+              setOffset(offset + limit);
+            }}
+          >
+            next
+          </button>
+        ))}
 
       <p>
-        {offset / 50} / {count && Math.round(count / 50)}
+        {offset / limit} / {count && Math.round(count / limit)}
       </p>
     </div>
   );

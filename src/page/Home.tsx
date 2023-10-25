@@ -20,6 +20,7 @@ const Home = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<Pokemons | null>(null);
   const [offset, setOffset] = useState<number>(0);
+  let limit: number = 50;
 
   const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ const Home = (): JSX.Element => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=50`
+          `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -64,7 +65,12 @@ const Home = (): JSX.Element => {
           );
         })}
 
-        <Pagination count={data?.count} offset={offset} setOffset={setOffset} />
+        <Pagination
+          count={data?.count}
+          offset={offset}
+          setOffset={setOffset}
+          limit={limit}
+        />
       </div>
     </div>
   );

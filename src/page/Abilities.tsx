@@ -22,12 +22,13 @@ const Abilities = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<Abilities | null>(null);
   const [offset, setOffset] = useState<number>(0);
+  let limit: number = 80;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=80`
+          `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=${limit}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -63,7 +64,12 @@ const Abilities = (): JSX.Element => {
         })}
       </div>
 
-      <Pagination count={data?.count} offset={offset} setOffset={setOffset} />
+      <Pagination
+        count={data?.count}
+        offset={offset}
+        setOffset={setOffset}
+        limit={limit}
+      />
     </div>
   );
 };
