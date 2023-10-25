@@ -68,6 +68,20 @@ h3 {
   z-index: 1;
 }
 
+/* ------ Gestion erreur/loading ------ */
+.error {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 350px 0;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  margin: 350px 0;
+}
+
 /* ----------------------------------- */
 /* -------------- HEADER ------------- */
 /* ----------------------------------- */
@@ -199,61 +213,6 @@ header > div:first-of-type {
 .pokeType > div > p:hover {
   cursor: pointer;
   border: 1px solid black;
-}
-
-.normal {
-  background-color: #a0a2a0;
-}
-.fighting {
-  background-color: #fd8101;
-}
-.flying {
-  background-color: #82bbf0;
-}
-.poison {
-  background-color: #923fcc;
-}
-.ground {
-  background-color: #92501c;
-}
-.rock {
-  background-color: #b1aa82;
-}
-.bug {
-  background-color: #92a312;
-}
-.ghost {
-  background-color: #713e71;
-}
-.steel {
-  background-color: #5fa3ba;
-}
-.fire {
-  background-color: #e72425;
-}
-.water {
-  background-color: #2481f0;
-}
-.grass {
-  background-color: #3ca324;
-}
-.electric {
-  background-color: #fac100;
-}
-.psychic {
-  background-color: #ef3e7a;
-}
-.ice {
-  background-color: #3cd9ff;
-}
-.dragon {
-  background-color: #4f60e2;
-}
-.dark {
-  background-color: #4f3f3c;
-}
-.fairy {
-  background-color: #f070f0;
 }
 
 .pokeStat {
@@ -420,4 +379,60 @@ footer a {
   text-decoration: none;
   color: darkgray;
   font-weight: bold;
+}
+
+/* ----------- Color Types ----------- */
+.normal {
+  background-color: #a0a2a0;
+}
+.fighting {
+  background-color: #fd8101;
+}
+.flying {
+  background-color: #82bbf0;
+}
+.poison {
+  background-color: #923fcc;
+}
+.ground {
+  background-color: #92501c;
+}
+.rock {
+  background-color: #b1aa82;
+}
+.bug {
+  background-color: #92a312;
+}
+.ghost {
+  background-color: #713e71;
+}
+.steel {
+  background-color: #5fa3ba;
+}
+.fire {
+  background-color: #e72425;
+}
+.water {
+  background-color: #2481f0;
+}
+.grass {
+  background-color: #3ca324;
+}
+.electric {
+  background-color: #fac100;
+}
+.psychic {
+  background-color: #ef3e7a;
+}
+.ice {
+  background-color: #3cd9ff;
+}
+.dragon {
+  background-color: #4f60e2;
+}
+.dark {
+  background-color: #4f3f3c;
+}
+.fairy {
+  background-color: #f070f0;
 }

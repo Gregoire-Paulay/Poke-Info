@@ -26,7 +26,13 @@ const Header = (): JSX.Element => {
             >
               Abilities
             </p>
-            <p>Types</p>
+            <p
+              onClick={() => {
+                navigate("/PokeTypes");
+              }}
+            >
+              Types
+            </p>
             <p>Page 3</p>
             <p>Page 4</p>
           </div>

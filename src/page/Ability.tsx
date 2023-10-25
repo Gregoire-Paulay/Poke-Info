@@ -1,25 +1,33 @@
 import axios from "axios";
+import { ZodError, z } from "zod";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import HashLoader from "react-spinners/HashLoader";
 
-type Ability = {
-  effect_entries: {
-    effect: string;
-    language: {
-      name: string;
-      url: string;
-    };
-  }[];
-  id: number;
-  name: string;
-  pokemon: {
-    is_hidden: boolean;
-    pokemon: {
-      name: string;
-      url: string;
-    };
-  }[];
-};
+// Type
+const abilitySchema = z.object({
+  effect_entries: z.array(
+    z.object({
+      effect: z.string(),
+      language: z.object({
+        name: z.string(),
+        url: z.string(),
+      }),
+    })
+  ),
+  id: z.number(),
+  name: z.string(),
+  pokemon: z.array(
+    z.object({
+      is_hidden: z.boolean(),
+      pokemon: z.object({
+        name: z.string(),
+        url: z.string(),
+      }),
+    })
+  ),
+});
+type AbilityDetails = z.infer<typeof abilitySchema>;
 
 const Ability = (): JSX.Element => {
   const { id } = useParams();
@@ -27,26 +35,44 @@ const Ability = (): JSX.Element => {
 
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [data, setData] = useState<Ability | null>(null);
+  const [data, setData] = useState<AbilityDetails | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setError(null);
         const response = await axios.get(
           `https://pokeapi.co/api/v2/ability/${id}`
         );
-        console.log(response.data);
-        setData(response.data);
+        // console.log(response.data);
+        const responseDataParsed = abilitySchema.parse(response.data);
+        setData(responseDataParsed);
         setIsLoading(false);
       } catch (error) {
-        setError(new Error("An error occured !!!"));
+        if (error instanceof ZodError) {
+          setError(new Error("Erreur de validation Zod"));
+        } else {
+          setError(new Error("An error occured !!!"));
+        }
       }
     };
     fetchData();
   }, []);
 
-  if (error) return <div> Error: {error.message}</div>;
-  if (isLoading) return <div>Loading....</div>;
+  if (error)
+    return (
+      <div className="container">
+        <div className="error">Error: {error.message}</div>
+      </div>
+    );
+  if (isLoading)
+    return (
+      <div className="container">
+        <div className="loading">
+          <HashLoader size={150} color="#6890f0" />
+        </div>
+      </div>
+    );
 
   return (
     <div className="container">

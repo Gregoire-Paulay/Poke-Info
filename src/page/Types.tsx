@@ -4,14 +4,11 @@ import { ZodError, z } from "zod";
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 
-// Components
-import Pagination from "../components/Pagination";
-
-//Type
-const abilitiesSchema = z.object({
+// Type
+const typeSchema = z.object({
   count: z.number(),
-  next: z.string().nullable(),
-  previous: z.string().nullable(),
+  next: z.null(),
+  previous: z.null(),
   results: z.array(
     z.object({
       name: z.string(),
@@ -19,26 +16,21 @@ const abilitiesSchema = z.object({
     })
   ),
 });
-type PokeAbilities = z.infer<typeof abilitiesSchema>;
+type PokeTypes = z.infer<typeof typeSchema>;
 
-const Abilities = (): JSX.Element => {
+const Types = (): JSX.Element => {
   const navigate = useNavigate();
 
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [data, setData] = useState<PokeAbilities | null>(null);
-  const [offset, setOffset] = useState<number>(0);
-  let limit: number = 80;
+  const [data, setData] = useState<PokeTypes | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setError(null);
-        const response = await axios.get(
-          `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=${limit}`
-        );
-        // console.log(response.data);
-        const responseDataParsed = abilitiesSchema.parse(response.data);
+        const response = await axios.get("https://pokeapi.co/api/v2/type/");
+        const responseDataParsed = typeSchema.parse(response.data);
         setData(responseDataParsed);
         setIsLoading(false);
       } catch (error) {
@@ -50,7 +42,7 @@ const Abilities = (): JSX.Element => {
       }
     };
     fetchData();
-  }, [offset]);
+  }, []);
 
   if (error)
     return (
@@ -69,32 +61,23 @@ const Abilities = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h1>All Abilities</h1>
-
-      <div>
-        {data?.results.map((abilities) => {
-          const abilityId = abilities.url.split("/")[6];
-          return (
-            <button
-              key={abilities.name}
-              onClick={() => {
-                navigate("/Ability/" + abilityId);
-              }}
-            >
-              {abilities.name}
-            </button>
-          );
-        })}
-      </div>
-
-      <Pagination
-        count={data?.count}
-        offset={offset}
-        setOffset={setOffset}
-        limit={limit}
-      />
+      Page tout les types
+      {data?.results.map((types) => {
+        const typeId = types.url.split("/")[6];
+        return (
+          <p
+            key={types.name}
+            className={types.name}
+            onClick={() => {
+              navigate("/PokeType/" + typeId);
+            }}
+          >
+            {types.name}
+          </p>
+        );
+      })}
     </div>
   );
 };
 
-export default Abilities;
+export default Types;

@@ -12,6 +12,8 @@ import Home from "./page/Home";
 import Pokemon from "./page/Pokemon";
 import Abilities from "./page/Abilities";
 import Ability from "./page/Ability";
+import Types from "./page/Types";
+import Type from "./page/TypeDetails";
 
 function App(): JSX.Element {
   const { theme } = useThemeContext();
@@ -26,6 +28,8 @@ function App(): JSX.Element {
           <Route path="/Pokemon/:name" element={<Pokemon />} />
           <Route path="/Abilities" element={<Abilities />} />
           <Route path="/Ability/:id" element={<Ability />} />
+          <Route path="/PokeTypes" element={<Types />} />
+          <Route path="/PokeType/:id" element={<Type />} />
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Home />} />
         </Routes>

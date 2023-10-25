@@ -1,51 +1,51 @@
 import axios from "axios";
+import { ZodError, z } from "zod";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import HashLoader from "react-spinners/HashLoader";
 
 // Function
 import Upperfirst from "../assets/function/Upperfirst";
 
-type Pokemon = {
-  abilities: {
-    ability: {
-      name: string;
-      url: string;
-    };
-  }[];
-  height: number;
-  id: any;
-  name: string;
-  sprites: {
-    front_default: string;
-    front_shiny: string;
-    other: {
-      home: {
-        front_default: string;
-        front_shiny: string;
-      };
-      "official-artwork": {
-        front_default: string;
-        front_shiny: string;
-      };
-    };
-  };
-  stats: {
-    base_stat: number;
-    effort: number;
-    stat: {
-      name: string;
-      url: string;
-    };
-  }[];
-  types: {
-    slot: number;
-    type: {
-      name: string;
-      url: string;
-    };
-  }[];
-  weight: number;
-};
+// Type
+const pokemonSchema = z.object({
+  abilities: z.array(
+    z.object({ ability: z.object({ name: z.string(), url: z.string() }) })
+  ),
+  height: z.number(),
+  weight: z.number(),
+  id: z.number(),
+  name: z.string(),
+  sprites: z.object({
+    front_default: z.string(),
+    front_shiny: z.string(),
+    other: z.object({
+      home: z.object({
+        front_default: z.string(),
+        front_shiny: z.string(),
+      }),
+      "official-artwork": z.object({
+        front_default: z.string(),
+        front_shiny: z.string(),
+      }),
+    }),
+  }),
+  stats: z.array(
+    z.object({
+      base_stat: z.number(),
+      effort: z.number(),
+      stat: z.object({ name: z.string(), url: z.string() }),
+    })
+  ),
+  types: z.array(
+    z.object({
+      slot: z.number(),
+      type: z.object({ name: z.string(), url: z.string() }),
+    })
+  ),
+});
+
+type Pokemons = z.infer<typeof pokemonSchema>;
 
 const Pokemon = (): JSX.Element => {
   const { name } = useParams();
@@ -54,27 +54,44 @@ const Pokemon = (): JSX.Element => {
 
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [data, setData] = useState<Pokemon | null>(null);
+  const [data, setData] = useState<Pokemons | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setError(null);
         const response = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${name}`
         );
         // console.log(response.data);
-        setData(response.data);
-
+        const responseDataParsed = pokemonSchema.parse(response.data);
+        setData(responseDataParsed);
         setIsLoading(false);
       } catch (error) {
-        setError(new Error("An error occured !!!"));
+        if (error instanceof ZodError) {
+          setError(new Error("Erreur de validation Zod"));
+        } else {
+          setError(new Error("An error occured !!!"));
+        }
       }
     };
     fetchData();
   }, []);
 
-  if (error) return <div> Error: {error.message}</div>;
-  if (isLoading) return <div>Loading....</div>;
+  if (error)
+    return (
+      <div className="container">
+        <div className="error">Error: {error.message}</div>
+      </div>
+    );
+  if (isLoading)
+    return (
+      <div className="container">
+        <div className="loading">
+          <HashLoader size={150} color="#6890f0" />
+        </div>
+      </div>
+    );
 
   return (
     <div className="container">
@@ -83,15 +100,16 @@ const Pokemon = (): JSX.Element => {
           <div className="dex">
             <h1>{Upperfirst(name)}</h1>
 
-            {data?.id < 10 ? (
-              <h2># 000{data?.id}</h2>
-            ) : data?.id < 100 ? (
-              <h2># 00{data?.id}</h2>
-            ) : data?.id < 1000 ? (
-              <h2># 0{data?.id}</h2>
-            ) : (
-              <h2># {data?.id}</h2>
-            )}
+            {data?.id &&
+              (data?.id < 10 ? (
+                <h2># 000{data?.id}</h2>
+              ) : data?.id < 100 ? (
+                <h2># 00{data?.id}</h2>
+              ) : data?.id < 1000 ? (
+                <h2># 0{data?.id}</h2>
+              ) : (
+                <h2># {data?.id}</h2>
+              ))}
           </div>
 
           <img
@@ -105,8 +123,15 @@ const Pokemon = (): JSX.Element => {
             <h3>Type</h3>
             <div>
               {data?.types.map((types) => {
+                const typeId = types.type.url.split("/")[6];
                 return (
-                  <p key={types.type.name} className={types.type.name}>
+                  <p
+                    key={types.type.name}
+                    className={types.type.name}
+                    onClick={() => {
+                      navigate("/PokeType/" + typeId);
+                    }}
+                  >
                     {Upperfirst(types.type.name)}
                   </p>
                 );
