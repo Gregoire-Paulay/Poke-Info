@@ -371,14 +371,45 @@ header > div:first-of-type {
 footer {
   padding: 30px;
   margin-top: 40px;
-  text-align: center;
   border-top: 1px solid lightgray;
+  background-color: #190d33;
+  color: white;
+}
+footer > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footerDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.footerDescription > p:first-of-type {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+.footerLink {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.footerLink > p:first-child {
+  color: #dea923;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 footer a {
   text-decoration: none;
-  color: darkgray;
-  font-weight: bold;
+  color: white;
+}
+footer a:hover {
+  cursor: pointer;
+  color: #d3a026;
 }
 
 /* ----------- Color Types ----------- */

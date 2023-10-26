@@ -1,8 +1,24 @@
 const Footer = () => {
   return (
     <footer>
-      Made with <a href="https://fr.legacy.reactjs.org/"> React</a> by
-      <a href="https://github.com/Gregoire-Paulay"> Grégoire Paulay</a> - 2023
+      <div className="container">
+        <div className="footerDescription">
+          <p>Grégoire Paulay</p>
+          <p>56450 - Surzur, France</p>
+          <p>gregoirepaulay.pro@gmail.com</p>
+          <p>06 23 29 73 02</p>
+        </div>
+        <div>
+          2023 - Grégoire Paulay - Made with
+          <a href="https://fr.legacy.reactjs.org/"> React</a>
+        </div>
+
+        <div className="footerLink">
+          <p> Mes réseaux</p>
+          <a href="">Github</a>
+          <a href="">Linkedin</a>
+        </div>
+      </div>
     </footer>
   );
 };
