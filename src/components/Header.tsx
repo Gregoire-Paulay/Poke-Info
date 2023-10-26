@@ -21,6 +21,13 @@ const Header = (): JSX.Element => {
           <div className="headerNav">
             <p
               onClick={() => {
+                navigate("/PokemonList");
+              }}
+            >
+              All Pokemons
+            </p>
+            <p
+              onClick={() => {
                 navigate("/Abilities");
               }}
             >
@@ -33,7 +40,13 @@ const Header = (): JSX.Element => {
             >
               Types
             </p>
-            <p>Moves</p>
+            <p
+              onClick={() => {
+                navigate("/MovesList");
+              }}
+            >
+              Moves
+            </p>
           </div>
         </div>
       </div>

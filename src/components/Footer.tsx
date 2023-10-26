@@ -15,8 +15,10 @@ const Footer = () => {
 
         <div className="footerLink">
           <p> Mes réseaux</p>
-          <a href="">Github</a>
-          <a href="">Linkedin</a>
+          <a href="https://github.com/Gregoire-Paulay">Github</a>
+          <a href="https://www.linkedin.com/in/grégoire-paulay-142384285/">
+            Linkedin
+          </a>
         </div>
       </div>
     </footer>

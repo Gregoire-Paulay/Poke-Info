@@ -7,6 +7,9 @@ import HashLoader from "react-spinners/HashLoader";
 // Function
 import Upperfirst from "../assets/function/Upperfirst";
 
+//Image
+import TableTypes from "../assets/Table-des-type.jpg";
+
 // Type
 const typeSchema = z.object({
   count: z.number(),
@@ -64,21 +67,25 @@ const Types = (): JSX.Element => {
 
   return (
     <div className="container">
-      Page tout les types
-      {data?.results.map((types) => {
-        const typeId = types.url.split("/")[6];
-        return (
-          <p
-            key={types.name}
-            className={types.name}
-            onClick={() => {
-              navigate("/PokeType/" + typeId);
-            }}
-          >
-            {Upperfirst(types.name)}
-          </p>
-        );
-      })}
+      <h2>Liste des différents types de pokémons</h2>
+      <div>
+        {data?.results.map((types) => {
+          const typeId = types.url.split("/")[6];
+          return (
+            <p
+              key={types.name}
+              className={types.name}
+              onClick={() => {
+                navigate("/PokeType/" + typeId);
+              }}
+            >
+              {Upperfirst(types.name)}
+            </p>
+          );
+        })}
+      </div>
+
+      <img src={TableTypes} alt="Table des types" />
     </div>
   );
 };

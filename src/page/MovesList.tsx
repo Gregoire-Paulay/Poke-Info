@@ -6,12 +6,10 @@ import HashLoader from "react-spinners/HashLoader";
 
 // Components
 import Pagination from "../components/Pagination";
-
 // Fonction
 import Upperfirst from "../assets/function/Upperfirst";
-
 //Type
-const abilitiesSchema = z.object({
+const movesSchema = z.object({
   count: z.number(),
   next: z.string().nullable(),
   previous: z.string().nullable(),
@@ -22,14 +20,14 @@ const abilitiesSchema = z.object({
     })
   ),
 });
-type PokeAbilities = z.infer<typeof abilitiesSchema>;
+type Moves = z.infer<typeof movesSchema>;
 
-const Abilities = (): JSX.Element => {
+const MovesList = (): JSX.Element => {
   const navigate = useNavigate();
 
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [data, setData] = useState<PokeAbilities | null>(null);
+  const [data, setData] = useState<Moves | null>(null);
   const [offset, setOffset] = useState<number>(0);
   let limit: number = 80;
 
@@ -38,11 +36,12 @@ const Abilities = (): JSX.Element => {
       try {
         setError(null);
         const response = await axios.get(
-          `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=${limit}`
+          `https://pokeapi.co/api/v2/move/?offset=${offset}&limit=${limit}`
         );
-        // console.log(response.data);
-        const responseDataParsed = abilitiesSchema.parse(response.data);
+        console.log(response.data);
+        const responseDataParsed = movesSchema.parse(response.data);
         setData(responseDataParsed);
+
         setIsLoading(false);
       } catch (error) {
         if (error instanceof ZodError) {
@@ -73,18 +72,19 @@ const Abilities = (): JSX.Element => {
   return (
     <div className="container">
       <div>
-        <h2>All Abilities</h2>
+        <h2>List of all moves Pokémon can learn</h2>
+
         <div>
-          {data?.results.map((abilities) => {
-            const abilityId = abilities.url.split("/")[6];
+          {data?.results.map((moves) => {
+            const moveId = moves.url.split("/")[6];
             return (
               <button
-                key={abilities.name}
+                key={moves.name}
                 onClick={() => {
-                  navigate("/Ability/" + abilityId);
+                  navigate("/MoveDetails/" + moveId);
                 }}
               >
-                {Upperfirst(abilities.name)}
+                {Upperfirst(moves.name)}
               </button>
             );
           })}
@@ -101,4 +101,4 @@ const Abilities = (): JSX.Element => {
   );
 };
 
-export default Abilities;
+export default MovesList;

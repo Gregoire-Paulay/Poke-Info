@@ -35,7 +35,7 @@ const Pagination = ({
         ))}
 
       <p>
-        {offset / limit} / {count && Math.round(count / limit)}
+        {offset / limit + 1} / {count && Math.round(count / limit)}
       </p>
     </div>
   );

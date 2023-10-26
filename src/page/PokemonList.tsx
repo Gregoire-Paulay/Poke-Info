@@ -4,24 +4,27 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 
+// Components
+import Pagination from "../components/Pagination";
+
 // Function
 import Upperfirst from "../assets/function/Upperfirst";
-//Type
-const pokemonSchema = z.object({
-  name: z.string(),
-  sprites: z.object({
-    front_default: z.string(),
-    other: z.object({
-      ["official-artwork"]: z.object({ front_default: z.string() }),
-    }),
-  }),
-});
-type Pokemon = z.infer<typeof pokemonSchema>;
 
-const Home = (): JSX.Element => {
+//Types
+const pokemonSchema = z.object({
+  count: z.number(),
+  next: z.string().nullable(),
+  previous: z.string().nullable(),
+  results: z.array(z.object({ name: z.string(), url: z.string() })),
+});
+type Pokemons = z.infer<typeof pokemonSchema>;
+
+const PokemonList = (): JSX.Element => {
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [data, setData] = useState<Pokemon | null>(null);
+  const [data, setData] = useState<Pokemons | null>(null);
+  const [offset, setOffset] = useState<number>(0);
+  let limit: number = 60;
 
   const navigate = useNavigate();
 
@@ -29,9 +32,8 @@ const Home = (): JSX.Element => {
     const fetchData = async () => {
       try {
         setError(null);
-        const randomNum = Math.round(Math.random() * 1000);
         const response = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${randomNum}`
+          `https://pokeapi.co/api/v2/pokemon-species/?offset=${offset}&limit=${limit}`
         );
         // console.log(response.data);
         const responseDataParsed = pokemonSchema.parse(response.data);
@@ -46,7 +48,7 @@ const Home = (): JSX.Element => {
       }
     };
     fetchData();
-  }, []);
+  }, [offset]);
 
   if (error)
     return (
@@ -65,26 +67,35 @@ const Home = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h2>Home</h2>
-
-      <div>Actualités (pokepedia)</div>
-
       <div>
-        Random Pokemon
-        <button
-          onClick={() => {
-            navigate("/pokemon/" + data?.name);
-          }}
-        >
-          <p>{Upperfirst(data?.name)}</p>
-          <img
-            src={data?.sprites.other["official-artwork"].front_default}
-            alt="Sprites pokémon"
-          />
-        </button>
+        {data?.results.map((pokemon) => {
+          const url = pokemon.url.split("/")[6];
+
+          return (
+            <button
+              key={pokemon.name}
+              onClick={() => {
+                navigate("/pokemon/" + pokemon.name);
+              }}
+            >
+              <div>{Upperfirst(pokemon.name)}</div>
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
+                alt="Sprites pokémon"
+              />
+            </button>
+          );
+        })}
+
+        <Pagination
+          count={data?.count}
+          offset={offset}
+          setOffset={setOffset}
+          limit={limit}
+        />
       </div>
     </div>
   );
 };
 
-export default Home;
+export default PokemonList;
