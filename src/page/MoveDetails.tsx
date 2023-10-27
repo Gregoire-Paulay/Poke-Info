@@ -76,7 +76,7 @@ const MoveDetails = (): JSX.Element => {
   return (
     <div className="container">
       <div>
-        <h2>{Upperfirst(data?.name)}</h2>
+        <h2>{Upperfirst(data?.name)} (move)</h2>
         {data?.effect_entries.map((description) => {
           return (
             <p key={description.effect}>

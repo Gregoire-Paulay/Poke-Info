@@ -81,7 +81,7 @@ const Ability = (): JSX.Element => {
     <div className="container">
       <div className="abilityDetails">
         <div>
-          <h2>{Upperfirst(data?.name)}</h2>
+          <h1>{Upperfirst(data?.name)} (ability)</h1>
 
           {data?.effect_entries.map((ability) => {
             return (
@@ -92,25 +92,28 @@ const Ability = (): JSX.Element => {
           })}
         </div>
 
-        <div className="">
-          {data?.pokemon.map((pokemon) => {
-            const url = pokemon.pokemon.url.split("/")[6];
-            return (
-              <button
-                className="pokeButton"
-                key={pokemon.pokemon.name}
-                onClick={() => {
-                  navigate("/pokemon/" + pokemon.pokemon.name);
-                }}
-              >
-                <p>{Upperfirst(pokemon.pokemon.name)}</p>
-                <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
-                  alt="Sprites pokémon"
-                />
-              </button>
-            );
-          })}
+        <div className="pokeLearn">
+          <h2>Pokemons who can learn the {data?.name} ability</h2>
+          <div>
+            {data?.pokemon.map((pokemon) => {
+              const url = pokemon.pokemon.url.split("/")[6];
+              return (
+                <button
+                  className="pokeButton"
+                  key={pokemon.pokemon.name}
+                  onClick={() => {
+                    navigate("/pokemon/" + pokemon.pokemon.name);
+                  }}
+                >
+                  <p>{Upperfirst(pokemon.pokemon.name)}</p>
+                  <img
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
+                    alt="Sprites pokémon"
+                  />
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

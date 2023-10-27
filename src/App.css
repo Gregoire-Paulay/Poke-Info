@@ -558,17 +558,92 @@ header > div:first-of-type {
 
 /* ----------- PAGE ABILITY ---------- */
 .abilityDetails {
-  border: 3px solid red;
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  min-height: 650px;
+  align-items: center;
+}
+.abilityDetails h1 {
+  text-align: center;
+}
+.pokeLearn {
+  /* border: 3px solid purple; */
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin-top: 15px;
+  align-items: center;
+  width: 99%;
+}
+
+.pokeLearn > div {
+  /* border: 2px solid lightsalmon; */
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/* ----------- PAGE TYPES ------------ */
+.allTypes {
+  /* border: 3px solid red; */
   display: flex;
   flex-direction: column;
 }
-.abilityDetails > div:nth-child(2) {
-  border: 3px solid purple;
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  flex-wrap: wrap;
+.allTypes > h1 {
+  border-bottom: 1px solid darkgray;
   padding: 5px;
+  margin-bottom: 5px;
+}
+.allTypes p {
+  line-height: 20px;
+  padding: 5px;
+}
+.allTypes > div:first-of-type {
+  /* border: 2px solid yellowgreen; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  margin-top: 25px;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  margin-bottom: 50px;
+  color: black;
+}
+
+.typeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  width: 98%;
+  background-color: var(--light);
+  border-radius: 8px;
+  border: 1px solid darkgray;
+}
+.typeList p {
+  border: 1px solid lightgray;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 17px;
+}
+.typeList p:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.allTypes h3 {
+  border-bottom: 1px solid lightgray;
+  font-size: 22px;
+  margin-top: 15px;
 }
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */
