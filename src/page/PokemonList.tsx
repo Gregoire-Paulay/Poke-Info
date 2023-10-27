@@ -6,10 +6,8 @@ import HashLoader from "react-spinners/HashLoader";
 
 // Components
 import Pagination from "../components/Pagination";
-
 // Function
 import Upperfirst from "../assets/function/Upperfirst";
-
 //Types
 const pokemonSchema = z.object({
   count: z.number(),

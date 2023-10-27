@@ -16,7 +16,7 @@ const Pagination = ({
       {offset ? (
         <button
           onClick={() => {
-            setOffset(offset - limit);
+            setOffset((prevState) => prevState - limit);
           }}
         >
           previous
@@ -27,7 +27,7 @@ const Pagination = ({
         (offset / limit >= Math.floor(count / limit) ? null : (
           <button
             onClick={() => {
-              setOffset(offset + limit);
+              setOffset((prevState) => prevState + limit);
             }}
           >
             next
