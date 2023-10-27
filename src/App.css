@@ -34,7 +34,7 @@ h3 {
   font-weight: bold;
 }
 
-/* ------ Gestion light/dark mode ------ */
+/* ----- Gestion light/dark mode ----- */
 .night {
   background-color: var(--dark);
   color: var(--light);
@@ -72,7 +72,7 @@ h3 {
   z-index: 1;
 }
 
-/* ------ Gestion erreur/loading ------ */
+/* ----- Gestion erreur/loading ----- */
 .error {
   color: red;
   font-size: 20px;
@@ -85,6 +85,8 @@ h3 {
   justify-content: center;
   margin: 350px 0;
 }
+
+/* ----------- Pagination ----------- */
 
 /* ----------------------------------- */
 /* -------------- HEADER ------------- */
@@ -478,6 +480,96 @@ header > div:first-of-type {
   border-radius: 5px;
 }
 
+.sprites {
+  border: 1px solid darkgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  background-color: whitesmoke;
+  border-radius: 15px;
+}
+.sprites > div {
+  border: 1px solid darkblue;
+  padding: 10px;
+  background-color: var(--darkblue);
+  justify-content: center;
+  display: flex;
+  gap: 15px;
+  border-radius: 8px;
+  width: 95%;
+}
+.sprites > div > div {
+  /* border: 3px solid black; */
+  background-color: var(--lightblue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 49%;
+  border-radius: 8px;
+}
+.sprites section {
+  /* border: 3px solid orange; */
+  display: flex;
+  justify-content: center;
+  width: 98%;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  gap: 25px;
+}
+.sprites img {
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  margin: 8px 0;
+  width: 20%;
+}
+/* ---------- PAGE ABILITIES --------- */
+.allAbilities {
+  /* border: 3px solid pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.allAbilities > div {
+  border: 1px solid darkgray;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  padding: 15px;
+  background-color: whitesmoke;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+.allAbilities > div > button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 3px 7px;
+}
+.allAbilities > div > button:hover {
+  cursor: pointer;
+  background-color: var(--dark);
+  color: white;
+}
+
+/* ----------- PAGE ABILITY ---------- */
+.abilityDetails {
+  border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+}
+.abilityDetails > div:nth-child(2) {
+  border: 3px solid purple;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */
 /* ----------------------------------- */

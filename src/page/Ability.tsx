@@ -79,34 +79,39 @@ const Ability = (): JSX.Element => {
 
   return (
     <div className="container">
-      <h2>{Upperfirst(data?.name)}</h2>
+      <div className="abilityDetails">
+        <div>
+          <h2>{Upperfirst(data?.name)}</h2>
 
-      {data?.effect_entries.map((ability) => {
-        return (
-          <p key={ability.effect}>
-            {ability.language.name === "en" && ability.effect}
-          </p>
-        );
-      })}
+          {data?.effect_entries.map((ability) => {
+            return (
+              <p key={ability.effect}>
+                {ability.language.name === "en" && ability.effect}
+              </p>
+            );
+          })}
+        </div>
 
-      <div>
-        {data?.pokemon.map((pokemon) => {
-          const url = pokemon.pokemon.url.split("/")[6];
-          return (
-            <button
-              key={pokemon.pokemon.name}
-              onClick={() => {
-                navigate("/pokemon/" + pokemon.pokemon.name);
-              }}
-            >
-              <p>{Upperfirst(pokemon.pokemon.name)}</p>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
-                alt="Sprites pokémon"
-              />
-            </button>
-          );
-        })}
+        <div className="">
+          {data?.pokemon.map((pokemon) => {
+            const url = pokemon.pokemon.url.split("/")[6];
+            return (
+              <button
+                className="pokeButton"
+                key={pokemon.pokemon.name}
+                onClick={() => {
+                  navigate("/pokemon/" + pokemon.pokemon.name);
+                }}
+              >
+                <p>{Upperfirst(pokemon.pokemon.name)}</p>
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
+                  alt="Sprites pokémon"
+                />
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

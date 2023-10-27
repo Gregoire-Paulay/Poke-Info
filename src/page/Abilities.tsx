@@ -31,7 +31,7 @@ const Abilities = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<PokeAbilities | null>(null);
   const [offset, setOffset] = useState<number>(0);
-  let limit: number = 80;
+  let limit: number = 363;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +40,7 @@ const Abilities = (): JSX.Element => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=${limit}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         const responseDataParsed = abilitiesSchema.parse(response.data);
         setData(responseDataParsed);
         setIsLoading(false);
@@ -72,8 +72,12 @@ const Abilities = (): JSX.Element => {
 
   return (
     <div className="container">
-      <div>
-        <h2>All Abilities</h2>
+      <div className="allAbilities">
+        <h1>Pokemon Abilities</h1>
+        <p>
+          list of all abilities that pokemon can have(click on ability to learn
+          more about them)
+        </p>
         <div>
           {data?.results.map((abilities) => {
             const abilityId = abilities.url.split("/")[6];
@@ -91,12 +95,12 @@ const Abilities = (): JSX.Element => {
         </div>
       </div>
 
-      <Pagination
+      {/* <Pagination
         count={data?.count}
         offset={offset}
         setOffset={setOffset}
         limit={limit}
-      />
+      /> */}
     </div>
   );
 };

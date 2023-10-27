@@ -220,34 +220,41 @@ const Pokemon = (): JSX.Element => {
         </div>
       </div>
 
-      <div>
-        <h2>Imagerie</h2>
+      <div className="sprites">
+        <h1>Sprites</h1>
         <div>
           <div>
             <h3>Official Artwork</h3>
-            {data?.sprites.other["official-artwork"].front_default && (
-              <img
-                src={data?.sprites.other["official-artwork"].front_default}
-                alt="sprites"
-              />
-            )}
+            <section>
+              {data?.sprites.other["official-artwork"].front_default && (
+                <img
+                  src={data?.sprites.other["official-artwork"].front_default}
+                  alt="sprites"
+                />
+              )}
 
-            {data?.sprites.other["official-artwork"].front_shiny && (
-              <img
-                src={data?.sprites.other["official-artwork"].front_shiny}
-                alt="sprites"
-              />
-            )}
+              {data?.sprites.other["official-artwork"].front_shiny && (
+                <img
+                  src={data?.sprites.other["official-artwork"].front_shiny}
+                  alt="sprites"
+                />
+              )}
+            </section>
           </div>
 
           <div>
             <h3>Home </h3>
-            {data?.sprites.other.home.front_default && (
-              <img src={data?.sprites.other.home.front_default} alt="sprites" />
-            )}
-            {data?.sprites.other.home.front_shiny && (
-              <img src={data?.sprites.other.home.front_shiny} alt="sprites" />
-            )}
+            <section>
+              {data?.sprites.other.home.front_default && (
+                <img
+                  src={data?.sprites.other.home.front_default}
+                  alt="sprites"
+                />
+              )}
+              {data?.sprites.other.home.front_shiny && (
+                <img src={data?.sprites.other.home.front_shiny} alt="sprites" />
+              )}
+            </section>
           </div>
         </div>
       </div>
