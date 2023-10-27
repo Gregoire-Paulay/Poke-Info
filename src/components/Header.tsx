@@ -16,38 +16,36 @@ const Header = (): JSX.Element => {
             navigate("/");
           }}
         />
-        <div>
-          <h1>Titre de mon site</h1>
-          <div className="headerNav">
-            <p
-              onClick={() => {
-                navigate("/PokemonList");
-              }}
-            >
-              All Pokemons
-            </p>
-            <p
-              onClick={() => {
-                navigate("/Abilities");
-              }}
-            >
-              Abilities
-            </p>
-            <p
-              onClick={() => {
-                navigate("/PokeTypes");
-              }}
-            >
-              Types
-            </p>
-            <p
-              onClick={() => {
-                navigate("/MovesList");
-              }}
-            >
-              Moves
-            </p>
-          </div>
+
+        <div className="headerNav">
+          <p
+            onClick={() => {
+              navigate("/PokemonList");
+            }}
+          >
+            All Pokemons
+          </p>
+          <p
+            onClick={() => {
+              navigate("/Abilities");
+            }}
+          >
+            Abilities
+          </p>
+          <p
+            onClick={() => {
+              navigate("/PokeTypes");
+            }}
+          >
+            Types
+          </p>
+          <p
+            onClick={() => {
+              navigate("/MovesList");
+            }}
+          >
+            Moves
+          </p>
         </div>
       </div>
     </header>

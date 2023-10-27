@@ -65,25 +65,29 @@ const PokemonList = (): JSX.Element => {
 
   return (
     <div className="container">
-      <div>
-        {data?.results.map((pokemon) => {
-          const url = pokemon.url.split("/")[6];
+      <div className="pokeList">
+        <h1>List of all Pokemons</h1>
+        <div>
+          {data?.results.map((pokemon) => {
+            const url = pokemon.url.split("/")[6];
 
-          return (
-            <button
-              key={pokemon.name}
-              onClick={() => {
-                navigate("/pokemon/" + pokemon.name);
-              }}
-            >
-              <div>{Upperfirst(pokemon.name)}</div>
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
-                alt="Sprites pokémon"
-              />
-            </button>
-          );
-        })}
+            return (
+              <button
+                className="pokeButton"
+                key={pokemon.name}
+                onClick={() => {
+                  navigate("/pokemon/" + pokemon.name);
+                }}
+              >
+                <p>{Upperfirst(pokemon.name)}</p>
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
+                  alt="Sprites pokémon"
+                />
+              </button>
+            );
+          })}
+        </div>
 
         <Pagination
           count={data?.count}
