@@ -29,7 +29,7 @@ const MovesList = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<Moves | null>(null);
   const [offset, setOffset] = useState<number>(0);
-  let limit: number = 80;
+  let limit: number = 922;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +38,7 @@ const MovesList = (): JSX.Element => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/move/?offset=${offset}&limit=${limit}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         const responseDataParsed = movesSchema.parse(response.data);
         setData(responseDataParsed);
 
@@ -71,8 +71,8 @@ const MovesList = (): JSX.Element => {
 
   return (
     <div className="container">
-      <div>
-        <h2>List of all moves Pokémon can learn</h2>
+      <div className="allMoves">
+        <h1>List of all moves Pokémon can learn</h1>
 
         <div>
           {data?.results.map((moves) => {
@@ -91,12 +91,12 @@ const MovesList = (): JSX.Element => {
         </div>
       </div>
 
-      <Pagination
+      {/* <Pagination
         count={data?.count}
         offset={offset}
         setOffset={setOffset}
         limit={limit}
-      />
+      /> */}
     </div>
   );
 };

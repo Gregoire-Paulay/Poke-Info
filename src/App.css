@@ -46,30 +46,37 @@ h3 {
 
 .moon {
   position: absolute;
-  top: 5px;
+  top: 8px;
   right: 10px;
   cursor: pointer;
-  font-size: 20px;
-  color: white;
-  background-color: #333333;
-  border: none;
-  border-radius: 50%;
-  padding: 6px 9px;
-  z-index: 1;
-}
-.sun {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-  color: black;
+  font-size: 28px;
+  color: var(--dark);
   background-color: var(--light);
   border: none;
   border-radius: 50%;
-  padding: 6px 9px;
+  border: 1px solid white;
   z-index: 1;
+}
+.moon:hover {
+  border: 1px solid black;
+  background-color: gray;
+}
+.sun {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 26px;
+  color: var(--light);
+  border: 1px solid var(--dark);
+  background-color: var(--dark);
+  border-radius: 50%;
+  z-index: 1;
+}
+.sun:hover {
+  border: 1px solid white;
+  background-color: gray;
 }
 
 /* ----- Gestion erreur/loading ----- */
@@ -764,6 +771,38 @@ header > div:first-of-type {
   cursor: pointer;
   border: 1px solid black;
 }
+
+/* --------- PAGE MOVELIST ---------- */
+.allMoves {
+  /* border: 3px solid pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.allMoves > div {
+  border: 1px solid darkgray;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  padding: 15px;
+  background-color: whitesmoke;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+.allMoves > div > button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 3px 7px;
+}
+.allMoves > div > button:hover {
+  cursor: pointer;
+  background-color: var(--dark);
+  color: white;
+}
+
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */
 /* ----------------------------------- */
