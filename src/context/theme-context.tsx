@@ -5,8 +5,8 @@ type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
 
-// type Theme = "night" | "light";
-type Theme = string;
+type Theme = "night" | "light";
+// type Theme = string;
 
 type ThemeContext = {
   theme: Theme;
@@ -18,7 +18,9 @@ export const ThemeContext = createContext<ThemeContext | null>(null);
 export default function ThemeContextProvider({
   children,
 }: ThemeContextProviderProps) {
-  const [theme, setTheme] = useState<Theme>(Cookies.get("mode") || "light");
+  const [theme, setTheme] = useState<Theme>(
+    Cookies.get("mode") ? "night" : "light"
+  );
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}

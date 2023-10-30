@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 
 // Components
-import Pagination from "../components/Pagination";
+// import Pagination from "../components/Pagination";
 
 // Fonction
 import Upperfirst from "../assets/function/Upperfirst";
@@ -30,7 +30,7 @@ const Abilities = (): JSX.Element => {
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<PokeAbilities | null>(null);
-  const [offset, setOffset] = useState<number>(0);
+  const [offset] = useState<number>(0);
   let limit: number = 363;
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Abilities = (): JSX.Element => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/ability/?offset=${offset}&limit=${limit}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         const responseDataParsed = abilitiesSchema.parse(response.data);
         setData(responseDataParsed);
         setIsLoading(false);

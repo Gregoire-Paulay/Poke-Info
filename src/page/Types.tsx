@@ -81,10 +81,9 @@ const Types = (): JSX.Element => {
             {data?.results.map((types) => {
               const typeId = types.url.split("/")[6];
               return (
-                <section>
+                <section key={types.name}>
                   {types.name !== "shadow" && types.name !== "unknown" && (
                     <p
-                      key={types.name}
                       className={types.name}
                       onClick={() => {
                         navigate("/PokeType/" + typeId);

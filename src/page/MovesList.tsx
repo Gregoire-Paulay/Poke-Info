@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 
 // Components
-import Pagination from "../components/Pagination";
+// import Pagination from "../components/Pagination";
 // Fonction
 import Upperfirst from "../assets/function/Upperfirst";
 //Type
@@ -28,7 +28,7 @@ const MovesList = (): JSX.Element => {
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<Moves | null>(null);
-  const [offset, setOffset] = useState<number>(0);
+  const [offset] = useState<number>(0);
   let limit: number = 922;
 
   useEffect(() => {

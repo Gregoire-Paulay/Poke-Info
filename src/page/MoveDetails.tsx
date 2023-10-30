@@ -20,7 +20,7 @@ const moveSchema = z.object({
   learned_by_pokemon: z.array(z.object({ name: z.string(), url: z.string() })),
   name: z.string(),
   power: z.number().nullable(),
-  pp: z.number(),
+  pp: z.number().nullable(),
   priority: z.number(),
   target: z.object({ name: z.string(), url: z.string() }),
   type: z.object({ name: z.string(), url: z.string() }),
@@ -75,49 +75,85 @@ const MoveDetails = (): JSX.Element => {
 
   return (
     <div className="container">
-      <div>
-        <h2>{Upperfirst(data?.name)} (move)</h2>
-        {data?.effect_entries.map((description) => {
-          return (
-            <p key={description.effect}>
-              {description.language.name === "en" && description.effect}
-            </p>
-          );
-        })}
-
-        <p
-          className={data?.type.name}
-          onClick={() => {
-            navigate("/PokeType/" + data?.type.name);
-          }}
-        >
-          Type : {Upperfirst(data?.type.name)}
-        </p>
-        <p>Category : {Upperfirst(data?.damage_class.name)}</p>
-        <p>PP : {data?.pp}</p>
-        <p>Power : {data?.power === null ? "⏤" : data?.power}</p>
-        <p>Accuracy : {data?.accuracy === null ? "⏤" : data?.accuracy} %</p>
-        <p>Target : {Upperfirst(data?.target.name)}</p>
-        <p>Priority : {data?.priority}</p>
-
+      <div className="moveDetails">
         <div>
-          {data?.learned_by_pokemon.map((pokemon) => {
-            const url = pokemon.url.split("/")[6];
+          <h1>{Upperfirst(data?.name)} (move)</h1>
+          {data?.effect_entries.map((description) => {
             return (
-              <button
-                key={pokemon.name}
-                onClick={() => {
-                  navigate("/pokemon/" + pokemon.name);
-                }}
-              >
-                <div>{Upperfirst(pokemon.name)}</div>
-                <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
-                  alt="Sprites pokémon"
-                />
-              </button>
+              <p key={description.effect}>
+                Description:{" "}
+                {description.language.name === "en" && description.effect}
+              </p>
             );
           })}
+
+          <section>
+            <h2>Move details</h2>
+            <div className="moveDescription">
+              {data?.type.name !== "shadow" ? (
+                <div className="moveType">
+                  <p>Type</p>
+                  <p
+                    className={data?.type.name}
+                    onClick={() => {
+                      navigate("/PokeType/" + data?.type.name);
+                    }}
+                  >
+                    {Upperfirst(data?.type.name)}
+                  </p>
+                </div>
+              ) : undefined}
+
+              <div>
+                <p>Category</p>
+                <p> {Upperfirst(data?.damage_class.name)}</p>
+              </div>
+              <div>
+                <p>PP</p>
+                <p>{data?.pp === null ? "⏤" : data?.pp}</p>
+              </div>
+              <div>
+                <p>Power</p>
+                <p>{data?.power === null ? "⏤" : data?.power}</p>
+              </div>
+              <div>
+                <p>Accuracy</p>
+                <p>{data?.accuracy === null ? "⏤" : data?.accuracy} %</p>
+              </div>
+              <div>
+                <p>Target</p>
+                <p>{Upperfirst(data?.target.name)}</p>
+              </div>
+              <div>
+                <p>Priority</p>
+                <p>{data?.priority}</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div className="pokeLearn">
+          <h2>Pokemons who can learn the {data?.name} ability</h2>
+          <div>
+            {data?.learned_by_pokemon.map((pokemon) => {
+              const url = pokemon.url.split("/")[6];
+              return (
+                <button
+                  className="pokeButton"
+                  key={pokemon.name}
+                  onClick={() => {
+                    navigate("/pokemon/" + pokemon.name);
+                  }}
+                >
+                  <p>{Upperfirst(pokemon.name)}</p>
+                  <img
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
+                    alt="Sprites pokémon"
+                  />
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

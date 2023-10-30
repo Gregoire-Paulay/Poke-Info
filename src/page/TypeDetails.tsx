@@ -222,6 +222,7 @@ const PokeType = (): JSX.Element => {
           <div>
             {data?.pokemon.map((pokemon) => {
               const url = pokemon.pokemon.url.split("/")[6];
+
               return (
                 <button
                   key={pokemon.pokemon.name}
@@ -231,6 +232,7 @@ const PokeType = (): JSX.Element => {
                   }}
                 >
                   <p>{Upperfirst(pokemon.pokemon.name)}</p>
+
                   <img
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${url}.png`}
                     alt="Sprites pokémon"
