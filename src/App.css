@@ -137,6 +137,62 @@ h3 {
   border: 1px solid black;
 }
 
+/* ----------- Color Types ----------- */
+.normal {
+  background-color: #a0a2a0;
+}
+.fighting {
+  background-color: #fd8101;
+}
+.flying {
+  background-color: #82bbf0;
+}
+.poison {
+  background-color: #923fcc;
+}
+.ground {
+  background-color: #92501c;
+}
+.rock {
+  background-color: #b1aa82;
+}
+.bug {
+  background-color: #92a312;
+}
+.ghost {
+  background-color: #713e71;
+}
+.steel {
+  background-color: #5fa3ba;
+}
+.fire {
+  background-color: #e72425;
+}
+.water {
+  background-color: #2481f0;
+}
+.grass {
+  background-color: #3ca324;
+}
+.electric {
+  background-color: #fac100;
+}
+.psychic {
+  background-color: #ef3e7a;
+}
+.ice {
+  background-color: #3cd9ff;
+}
+.dragon {
+  background-color: #4f60e2;
+}
+.dark {
+  background-color: #4f3f3c;
+}
+.fairy {
+  background-color: #f070f0;
+}
+
 /* ----------------------------------- */
 /* -------------- HEADER ------------- */
 /* ----------------------------------- */
@@ -196,6 +252,7 @@ header > div:first-of-type {
   border-radius: 8px;
   background-color: whitesmoke;
   color: black;
+  width: 60%;
 }
 .homePage > div:first-child > h2 {
   /* border: 1px solid black; */
@@ -225,6 +282,7 @@ header > div:first-of-type {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 40%;
 }
 .randomPoke > div {
   display: flex;
@@ -236,6 +294,9 @@ header > div:first-of-type {
   background-color: whitesmoke;
   color: black;
   border-radius: 6px;
+}
+.randomPoke img {
+  width: 98%;
 }
 
 .randomPoke > img:hover {
@@ -965,9 +1026,20 @@ footer {
   color: white;
 }
 footer > div {
+  /* border: 3px solid green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+footer > div > div:first-of-type {
+  /* border: 3px solid pink; */
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  width: 100%;
+  gap: 50px;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 10px;
 }
 
 .footerDescription {
@@ -1001,58 +1073,59 @@ footer a:hover {
   color: #d3a026;
 }
 
-/* ----------- Color Types ----------- */
-.normal {
-  background-color: #a0a2a0;
+/* ----------------------------------- */
+/* ----------------------------------- */
+/* ----------- MEDIA QUERY ----------- */
+/* ----------------------------------- */
+/* ----------------------------------- */
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 95%;
+  }
 }
-.fighting {
-  background-color: #fd8101;
+/* ----------- MEDIA 1000PX ---------- */
+@media (max-width: 1000px) {
+  .homePage {
+    flex-direction: column;
+    align-items: center;
+  }
+  .homePage > div:first-child {
+    width: 95%;
+  }
+  .randomPoke {
+    width: 60%;
+  }
 }
-.flying {
-  background-color: #82bbf0;
+
+/* ----------- MEDIA 900PX ----------- */
+@media (max-width: 900px) {
+  .headerNav {
+    width: 90%;
+  }
 }
-.poison {
-  background-color: #923fcc;
+
+/* ----------- MEDIA 600PX ----------- */
+@media (max-width: 600px) {
+  .headerNav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 8px;
+  }
 }
-.ground {
-  background-color: #92501c;
-}
-.rock {
-  background-color: #b1aa82;
-}
-.bug {
-  background-color: #92a312;
-}
-.ghost {
-  background-color: #713e71;
-}
-.steel {
-  background-color: #5fa3ba;
-}
-.fire {
-  background-color: #e72425;
-}
-.water {
-  background-color: #2481f0;
-}
-.grass {
-  background-color: #3ca324;
-}
-.electric {
-  background-color: #fac100;
-}
-.psychic {
-  background-color: #ef3e7a;
-}
-.ice {
-  background-color: #3cd9ff;
-}
-.dragon {
-  background-color: #4f60e2;
-}
-.dark {
-  background-color: #4f3f3c;
-}
-.fairy {
-  background-color: #f070f0;
+
+/* ----------- MEDIA 500PX ----------- */
+@media (max-width: 500px) {
+  footer > div > div:first-of-type {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .footerDescription {
+    align-items: center;
+  }
+  .footerMe {
+    text-align: center;
+  }
 }
