@@ -1102,7 +1102,7 @@ footer a:hover {
   .pokeInfo {
     flex-direction: column;
     align-items: center;
-    border: 5px solid red;
+    /* border: 5px solid red; */
   }
   .pokeInfo > div:first-of-type {
     width: 98%;
