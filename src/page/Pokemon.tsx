@@ -110,6 +110,7 @@ const Pokemon = (): JSX.Element => {
                 <h2># {data?.id}</h2>
               ))}
           </div>
+
           {data?.sprites.other["official-artwork"].front_default && (
             <img
               src={data?.sprites.other["official-artwork"].front_default}

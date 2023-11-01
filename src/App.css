@@ -404,9 +404,9 @@ header > div:first-of-type {
   display: flex;
   justify-content: center;
   height: 90%;
-  align-items: center;
   background-color: #ffffff;
   border-radius: 6px;
+  align-items: center;
 }
 
 .pokeInfo > div:nth-child(2) {
@@ -418,6 +418,7 @@ header > div:first-of-type {
   align-items: center;
   background-color: var(--darkblue);
   border-radius: 18px;
+  padding: 12px 0;
   gap: 6px;
 }
 .pokeType {
@@ -621,6 +622,7 @@ header > div:first-of-type {
   gap: 15px;
   border-radius: 8px;
   width: 95%;
+  margin-bottom: 15px;
 }
 .sprites > div > div {
   /* border: 3px solid black; */
@@ -646,7 +648,7 @@ header > div:first-of-type {
   border-radius: 8px;
   background-color: whitesmoke;
   margin: 8px 0;
-  width: 20%;
+  width: 30%;
 }
 /* ---------- PAGE ABILITIES --------- */
 .allAbilities {
@@ -963,7 +965,7 @@ header > div:first-of-type {
 }
 
 .moveDescription {
-  /* border: 2px solid pink; */
+  border: 5px solid pink;
   display: flex;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -1096,12 +1098,39 @@ footer a:hover {
   .randomPoke {
     width: 60%;
   }
+
+  .pokeInfo {
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid red;
+  }
+  .pokeInfo > div:first-of-type {
+    width: 98%;
+  }
+  .dex > h2 {
+    padding: 19px 0;
+  }
+  .pokeInfo > div:nth-child(2) {
+    width: 98%;
+  }
+
+  .moveDescription {
+    flex-wrap: wrap;
+  }
 }
 
 /* ----------- MEDIA 900PX ----------- */
 @media (max-width: 900px) {
   .headerNav {
     width: 90%;
+  }
+
+  .typeDetails > div:first-of-type > div {
+    flex-direction: column;
+    align-items: center;
+  }
+  .properties {
+    width: 98%;
   }
 }
 
@@ -1127,5 +1156,26 @@ footer a:hover {
   }
   .footerMe {
     text-align: center;
+  }
+
+  .pokeStat > div {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .pokeEv > div {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .sprites > div {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sprites > div > div {
+    width: 98%;
+  }
+  .sprites img {
+    width: 40%;
   }
 }
