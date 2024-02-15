@@ -72,62 +72,57 @@ const Home = (): JSX.Element => {
           <section>
             <h3>Games : </h3>
             <li>
-              Detective Pikachu Returns, sequel to the 3DS game Detective
-              Pikachu is out.
+              The epilogue of The Hidden Treasure of Area Zero DLC for pokemon
+              Scarlet and Violet is out. As a means to deliver the Hidden
+              Treasure of Area Zero Epilogue, an online distribution was added
+              in perpituity in order to get the Mythical Pecha Berry item, which
+              can be taken to Peachy's in Mossui Town to start the Mochi Mayhem
+              story.
             </li>
             <li>
-              The latest Pokémon Scarlet & Violet Mass Outbreak event has begun.
-              This event causes Mass Outbreaks of Phantump, Drifloon, Mimikyu
-              and Greavard to spawn throughout both Paldea and Kitakami with the
-              Pokémon having a chance of having the Crafty Mark. This event runs
-              until 23:59 UTC on October 31st 2023.
+              The next Pokémon Café ReMix Delivery focus has been announced.
+              From February 16th 2024, the special outfit Sylveon (Confectioner)
+              will return to the Delivery feature
             </li>
-            <li>
-              The latest Tera Raid Battle event is now live in Pokémon Scarlet &
-              Violet. This event has Mismagius appearing in 5 Star Raid Battles
-              with a variety of rewards including larger amounts of Rare Candy.
-              This event runs until October 31st at 23:59 UTC.
-            </li>
+            <li></li>
           </section>
 
           <section>
             <h3>Anime :</h3>
             <li>
-              A dessert has gone missing! Can Detective Pikachu’s electrifying
-              logic save the day—and Tim’s flan? 🍮🔎
-              <br />
-              Find out in this animated short,
-              <a href="https://pkmn.news/46HbqyY">
-                “Detective Pikachu and the Mystery of the Missing Flan”!
-              </a>
+              The animated Serie Pokemon Concierge is available to Watch on{" "}
+              <a href="https://www.netflix.com/fr/title/81186864">Netflix</a>
             </li>
           </section>
 
           <section>
             <h3>Manga :</h3>
             <li>
-              The volume 6 of the Sword & Shield arc of the Pokémon Adventures
-              manga series was released on October 12, 2023.
+              The Omega Ruby & Alpha Sapphire Arc (adventures) will be released
+              in 2024.
             </li>
           </section>
 
           <section>
             <h3>JCC :</h3>
             <li>
-              The fourth expansion of cards from the Scarlet & Violet Series of
-              the pokémon Trading Car Game named
+              The second special expansion of the Scarlet & Violet series is
+              named
               <span className="bold">
                 {" "}
-                Pokémon TCG: Scarlet & Violet—Paradox Rift{" "}
+                Pokémon TCG: Scarlet & Violet—Paldean Fates{" "}
               </span>
-              will be realeased on November 3, 2023.
+              and was released on January 26, 2024
             </li>
             <li>
-              The first special expansion released during the Scarlet & Violet
-              Series that focuses only on the first 151 Pokémon to ever be
-              introduced{" "}
-              <span className="bold"> Pokémon TCG: Scarlet & Violet—151 </span>{" "}
-              was released on September 22, 2023.
+              The
+              <span className="bold">
+                {" "}
+                Pokemon TCG: Scarlet & Violet - Temporal Forces{" "}
+              </span>{" "}
+              is the name given to the set that makes up the fifth expansion of
+              cards from the Scarlet & Violet Series of the Pokémon Trading Card
+              Game. It will release on March 22, 2024
             </li>
           </section>
         </div>
