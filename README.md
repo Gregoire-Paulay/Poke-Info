@@ -1,7 +1,7 @@
 # Poké Info
 
 <h2 align="center">
-<img width="250" alt="Pokemon Logo" src="assets/pokemon-logo.jpg">
+<img width="250" alt="Pokemon Logo" src="./src/assets/pokemon-logo.jpg">
 </h2>
 
 ## Overview
@@ -11,9 +11,12 @@ You will find a list of all pokemons, details for each of them, and data about p
 
 ## Screenshots
 
+<div align="center">
 <img width="300" height="250" src="https://res.cloudinary.com/dy2ayuond/image/upload/v1708354634/PokéInfo/Home.png"/>
 <img width="300" height="250" src="https://res.cloudinary.com/dy2ayuond/image/upload/v1708354544/PokéInfo/Pokémon%20List.png"/>
 <img width="300" height="250" src="https://res.cloudinary.com/dy2ayuond/image/upload/v1708354365/PokéInfo/Poké-Details.png"/>
+</div>
+<br/>
 
 ### Running the project
 
