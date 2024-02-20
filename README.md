@@ -24,7 +24,7 @@ Clone this repository :
 
 ```
 git clone :https://github.com/Gregoire-Paulay/Poke-Info.git
-cd Marvel-Front
+cd Poke-Info
 ```
 
 Install Packages :
