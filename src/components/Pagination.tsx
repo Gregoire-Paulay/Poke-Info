@@ -24,7 +24,7 @@ const Pagination = ({
           </button>
         ) : null}
         <p>
-          {offset / limit + 1} / {count && Math.round(count / limit)}
+          {offset / limit + 1} / {count && Math.ceil(count / limit)}
         </p>
         {count &&
           (offset / limit >= Math.floor(count / limit) ? null : (
